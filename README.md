@@ -7,7 +7,7 @@
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%2F11-0078D6)](#运行与打包)
 [![Electron](https://img.shields.io/badge/Electron-Desktop-47848F)](#技术栈)
 
-[**Windows 下载**](https://github.com/ww085213/Mineradio-LX-Music/releases/download/v1.6.1/Mineradio.Setup.1.6.1.exe) · [**GitHub Release**](https://github.com/ww085213/Mineradio-LX-Music/releases/tag/v1.6.1) · [**抖音项目演示**](https://v.douyin.com/eRlkIQrTOTw/)
+[**Windows 下载**](https://github.com/ww085213/Mineradio-LX-Music/releases/download/v1.7.0/Mineradio.Setup.1.7.0.exe) · [**GitHub Release**](https://github.com/ww085213/Mineradio-LX-Music/releases/tag/v1.7.0) · [**抖音项目演示**](https://v.douyin.com/eRlkIQrTOTw/)
 
 ## 项目预览
 
@@ -100,23 +100,21 @@ AI Agent「小M」不仅用于文本聊天，而是将播放器已有能力封�
 
 ---
 
-## 最新版本：1.6.1
+## 最新版本：1.7.0
 
-[下载 Windows 安装包](https://github.com/ww085213/Mineradio-LX-Music/releases/download/v1.6.1/Mineradio.Setup.1.6.1.exe) / [查看 v1.6.1 Release](https://github.com/ww085213/Mineradio-LX-Music/releases/tag/v1.6.1)
+[下载 Windows 安装包](https://github.com/ww085213/Mineradio-LX-Music/releases/download/v1.7.0/Mineradio.Setup.1.7.0.exe) / [查看 v1.7.0 Release](https://github.com/ww085213/Mineradio-LX-Music/releases/tag/v1.7.0)
 
-支持 Windows 10/11 x64。安装向导可选择安装目录和是否创建桌面快捷方式；原版、旧版及其他二创版本可直接覆盖升级。1.6.1 安装器会在覆盖文件前自动关闭正在运行的 Mineradio，并保留 `%APPDATA%\\Mineradio` 中的歌单、设置和用户数据。
+支持 Windows 10/11 x64。安装向导可选择安装目录和是否创建桌面快捷方式；原版、旧版及其他二创版本可直接覆盖升级。1.7.0 安装器会在覆盖文件前自动关闭正在运行的 Mineradio，并保留 `%APPDATA%\Mineradio` 中的歌单、设置和用户数据。安装包不内置音乐音源。
 
-### 1.6.1 主要更新
+### 1.7.0 主要更新
 
-- 新增五平台歌单广场、20 个分类标签、公开歌单搜索和分页浏览。
-- 歌单卡片改为先进入完整详情，单曲只追加播放，“播放全部”才替换队列。
-- 排行榜改用真实平台原榜，支持综合榜与 19 个平台榜单分类。
-- 自动同步增加多种周期、单项重试、新增/移除统计、失败原因和同步日志。
-- 新增完整备份恢复、队列保存与撤销、跨歌曲响度均衡。
-- 高级列表整理增加多字段排序、随机乱序和重复歌曲集中清理。
-- 优化长列表分批渲染、整理窗口布局、搜索栏透明效果和首页两列排列。
+- 接入 Folia 的 14 种歌词动画及多种背景效果，提供配色、背景和各模式参数设置。
+- 修复商籁、绘光的 Pixi 渲染加载问题。
+- 调整新效果的显示层级，让当前队列、右侧唱片架、主页和音源入口可见。
+- 返回主页时保留当前选中的歌词背景效果。
+- 修复“当前配色”把旧字体栈误传给歌词引擎造成的文字排版和裁切异常。
 
-[查看 1.6.1 完整更新说明](docs/releases/RELEASE_NOTES_1.6.1.md)
+[查看 1.7.0 完整更新说明](docs/releases/RELEASE_NOTES_1.7.0.md) · [查看对应源码](https://github.com/ww085213/Mineradio-LX-Music/tree/v1.7.0)
 
 ## 主要功能
 
@@ -158,16 +156,18 @@ npm start
 
 ### Windows 打包
 
+构建 1.7.0 发布版时，请先切换至 `v1.7.0` 标签，再按其中的 `lyric-viz-bridge/README.md` 构建并同步歌词引擎输出。
+
 ```bash
 npm run build:win
 ```
 
 `build:win` 会下载并校验固定版本的 FFmpeg 与 RePKG，运行发布校验，然后生成：
 
-- `dist/Mineradio.Setup.1.6.1.exe`
-- `dist/Mineradio.Setup.1.6.1.exe.blockmap`
+- `dist/Mineradio.Setup.1.7.0.exe`
+- `dist/Mineradio.Setup.1.7.0.exe.blockmap`
 - `dist/latest.yml`
-- `dist/Mineradio.Setup.1.6.1.SHA256.txt`
+- `dist/Mineradio.Setup.1.7.0.SHA256.txt`
 
 macOS DMG 需在 macOS 环境执行 `npm run build:mac`。
 
@@ -198,7 +198,7 @@ macOS DMG 需在 macOS 环境执行 `npm run build:mac`。
 ## 原项目、授权与使用声明
 
 - 本项目基于 [XxHuberrr/Mineradio](https://github.com/XxHuberrr/Mineradio) 修改维护，是非官方二创版本。
-- 本修改版继续按照 **GPL-3.0-only** 发布；公开源码应与 Release 安装包保持对应。
+- Mineradio 原有代码沿用 **GPL-3.0-only**；1.7.0 发布版中的 Folia 歌词渲染代码遵循 **AGPL-3.0**，其要求适用于包含该代码的组合版本。对应源码见 `v1.7.0` 标签。
 - 本项目不代表原作者、网易云音乐、QQ 音乐、腾讯音乐娱乐集团或其他第三方平台的官方版本。
 - 用户应确保对自行导入的本地文件、音源脚本和第三方链接拥有合法使用权限，并遵守相关平台条款。
 - 禁止将本项目用于盗版音乐、违规抓取、绕过平台限制、传播侵权内容或其他违法违规用途。
@@ -208,3 +208,5 @@ macOS DMG 需在 macOS 环境执行 `npm run build:mac`。
 ## License
 
 本项目采用 [GNU General Public License v3.0](LICENSE)（GPL-3.0-only）发布。
+
+1.7.0 发布版还包含 Folia 的 AGPL-3.0 代码，原作者许可和来源说明见对应源码中的 [Folia 许可证](https://github.com/ww085213/Mineradio-LX-Music/blob/v1.7.0/licenses/Folia-AGPL-3.0.txt) 和 [第三方移植说明](https://github.com/ww085213/Mineradio-LX-Music/blob/v1.7.0/docs/THIRD_PARTY_PORTS.md)。
